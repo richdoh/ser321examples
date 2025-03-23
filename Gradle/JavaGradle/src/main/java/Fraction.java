@@ -14,7 +14,17 @@ public class Fraction {
    private int numerator, denominator;
 
    public Fraction(){
-      numerator = denominator = 0;
+      numerator = 1;
+      denominator = 1;
+   }
+
+   //Assignment 1 -- Modifying to acccept two argments
+   public Fraction(int num, int denom){
+	   if (denom == 0){
+		   throw new IllegalArgumentException("Denominator cannot be zero.");
+		  }
+	   numerator = num;
+	   denominator = denom;
    }
 
    public void print() {
@@ -26,6 +36,9 @@ public class Fraction {
    }
 
    public void setDenominator (int d) {
+	   if (d == 0){
+		   throw new IllegalArgumentException("Denominator cannot be zero.");
+	   }
       denominator = d;
    }
 
@@ -41,11 +54,22 @@ public class Fraction {
       try {
          // create a new instance
          // Fraction *frac = [[Fraction alloc] init];
-         Fraction frac = new Fraction();
+         Fraction frac;
 
+	 //ASSIGNMENT 1
+	 if (args.length == 2){
+		 int num = Integer.parseInt(args[0]);
+		 int denom = Integer.parseInt(args[1]);
+		 frac = new Fraction(num, denom);
+	// }else if (args.length == 1){
+	//	 int num = Integer.parseInt(args[0]);
+	//	 frac = new Fraction(num, 1); //set default denom to 1 
+	}else {
+		frac = new Fraction();
+	}
          // set the values
-         frac.setNumerator(1);
-         frac.setDenominator(3);
+         // frac.setNumerator(1);
+         // frac.setDenominator(3);
 
          // print it
          System.out.print("The fraction is: ");
